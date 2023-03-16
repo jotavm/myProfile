@@ -34,6 +34,11 @@ class Persona
 
     #[ORM\Column(length: 100)]
     private ?string $correo = null;
+    
+    public function __toString()
+    {
+        return $this->identificacion .'con correo'. $this->correo;
+    }
 
     public function getId(): ?int
     {
