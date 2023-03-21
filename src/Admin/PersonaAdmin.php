@@ -23,6 +23,7 @@ class PersonaAdmin extends AbstractAdmin{
              ->add("segundoapellido", TextType::class, ['label' => 'Segundo Apellido', 'required' => false])
              ->add("fechanacimiento", DateType::class,
               ['label' => 'Fecha de Nacimineto', 'years' => range(date('Y')-100,date ('Y')-1)]);
+
              
     }
 
@@ -40,14 +41,14 @@ class PersonaAdmin extends AbstractAdmin{
 
     protected function configureListFields(ListMapper $list): void
     {
-        $list->add("identificacion")
+        $list->addIdentifier("identificacion", NULL, ["route" => ["name" => "edit"]])
              ->add("correo")
              ->add("primernombre") 
              ->add("segundonombre")
              ->add("primerapellido")
              ->add("segundoapellido")
-             ->add("fechanacimiento");
-             
+             ->add("fechanacimiento")
+             ->add("estado", null, ["edittable" => true]);        
     }
     protected function configureShowFields(ShowMapper $show): void
     {

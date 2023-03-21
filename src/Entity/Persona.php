@@ -34,6 +34,9 @@ class Persona
 
     #[ORM\Column(length: 100)]
     private ?string $correo = null;
+
+    #[ORM\Column]
+    private ?bool $estado = null;
     
     public function __toString()
     {
@@ -128,4 +131,16 @@ class Persona
 
         return $this;
     }
+
+    public function isEstado(): ?bool
+    {
+        return $this->estado;
+    }
+
+    public function setEstado(bool $estado): self
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }   
 }
