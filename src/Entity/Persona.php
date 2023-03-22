@@ -56,6 +56,12 @@ class Persona
 
     #[ORM\Column]
     private ?bool $estado = null;
+
+    #[ORM\ManyToOne(inversedBy: 'personas')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Paises $pais = null;
+
+   
     
     public function __toString()
     {
@@ -161,5 +167,19 @@ class Persona
         $this->estado = $estado;
 
         return $this;
-    }   
+    }
+
+    public function getPais(): ?Paises
+    {
+        return $this->pais;
+    }
+
+    public function setPais(?Paises $pais): self
+    {
+        $this->pais = $pais;
+
+        return $this;
+    }
+
+   
 }
