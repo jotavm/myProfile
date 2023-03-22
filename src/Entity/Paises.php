@@ -29,6 +29,11 @@ class Paises
     #[ORM\OneToMany(mappedBy: 'pais', targetEntity: Persona::class)]
     private Collection $personas;
 
+    public function __toString()
+    {
+        return $this->nombre;
+    }
+
     public function __construct()
     {
         $this->personas = new ArrayCollection();
