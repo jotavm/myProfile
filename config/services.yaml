@@ -25,5 +25,9 @@ services:
     admin.persona:
         class: App\Admin\PersonaAdmin
         tags:
-            - {name: sonata.admin, model_class: App\Entity\Persona, manager_type: orm, label: Persona}
+            - { name: sonata.admin, model_class: App\Entity\Persona, manager_type: orm, label: Persona, group: perfile}
     
+    admin.paises:
+        class: App\Admin\PaisesAdmin
+        tags:
+            - { name: sonata.admin, model_class: App\Entity\Paises, manager_type: orm, label: Paises, group: configuracion}
