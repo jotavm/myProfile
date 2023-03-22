@@ -5,8 +5,27 @@ namespace App\Entity;
 use App\Repository\PersonaRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraint as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+use ApiPlatform\Metadata\ApiResource;
+
+#[UniqueEntity(
+    fields: "identificacion",
+    errorPath: "identificacion",
+    message: "Este registro ya existe"
+)]
+
+#[UniqueEntity(
+    fields: "correo",
+    errorPath: "correo",
+    message: "Este registro ya existe"
+)]
+
 
 #[ORM\Entity(repositoryClass: PersonaRepository::class)]
+
+#[ApiResource]
 class Persona
 {
     #[ORM\Id]
