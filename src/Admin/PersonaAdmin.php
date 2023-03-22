@@ -2,11 +2,13 @@
 
 namespace App\Admin;
 
+
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\Form\Type\BooleanType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -22,8 +24,8 @@ class PersonaAdmin extends AbstractAdmin{
              ->add("primerapellido", TextType::class, ['label' => 'Primer Apellido'])
              ->add("segundoapellido", TextType::class, ['label' => 'Segundo Apellido', 'required' => false])
              ->add("fechanacimiento", DateType::class,
-              ['label' => 'Fecha de Nacimineto', 'years' => range(date('Y')-100,date ('Y')-1)]);
-
+              ['label' => 'Fecha de Nacimineto', 'years' => range(date('Y')-100,date ('Y')-1)])
+              ->add("estado", BooleanType::class, ['label' => 'Estado']);
              
     }
 
